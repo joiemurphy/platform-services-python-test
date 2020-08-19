@@ -20,5 +20,12 @@ def main():
     db.rewards.insert({"points": 1000, "rewardName": "50% off purchase", "tier": "J"})
     print("Rewards loaded in mongo")
 
+    print("Removing and reloading customers in mongo")
+    db = client["Customers"]
+    db.customers.remove()
+    db.customers.insert({"emailAddress": "coolemail1@gmail.com", "rewardPoints": 650, "rewardTier": "F", "rewardTierName": "30% off purchase", "nextRewardTier": "G", "nextRewardTierName": "35% off purchase", "nextRewardTierProgress": 0.5})
+    db.customers.insert({"emailAddress": "myawesomeemail@outlook.com", "rewardPoints": 750, "rewardTier": "G", "rewardTierName": "35% off purchase", "nextRewardTier": "H", "nextRewardTierName": "40% off purchase", "nextRewardTierProgress": 0.5})
+    print("Customers loaded in mongo")
+
 if __name__ == "__main__":
     main()
